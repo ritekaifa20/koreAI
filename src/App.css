@@ -94,6 +94,11 @@
   justify-content: space-between;
 }
 
+.jaida-logo-container .close-btn{
+  height: 25px;
+  width: 25px;
+
+}
 
 
 .image-container{
@@ -853,6 +858,7 @@ line-height: 70px;
 .kore-chat-window .kore-chat-header .chat-box-controls {
   width: auto;
   display: flex;
+  justify-content: space-between;
   position: absolute;
   left: auto;
   right: 5px;
@@ -891,21 +897,24 @@ background:#6e70d8;
 }
 
 .kore-chat-window .kore-chat-header .chat-box-controls button.close-btn{
-  background: url("data:image/svg+xml,%3Csvg%20width=%2224%22%20height=%2224%22%20viewBox=%220%200%2024%2024%22%20fill=%22none%22%20xmlns=%22http://www.w3.org/2000/svg%22%3E%0A%3Cpath%20d=%22M7.05025%2016.9498L16.9497%207.05027%22%20stroke=%22white%22%20stroke-width=%222%22%20stroke-linecap=%22round%22/%3E%0A%3Cpath%20d=%22M7.05025%207.05029L16.9497%2016.9498%22%20stroke=%22white%22%20stroke-width=%222%22%20stroke-linecap=%22round%22/%3E%0A%3C/svg%3E");
-  z-index: 9;
-  position: relative;
+  /* background: url("data:image/svg+xml,%3Csvg%20width=%2224%22%20height=%2224%22%20viewBox=%220%200%2024%2024%22%20fill=%22none%22%20xmlns=%22http://www.w3.org/2000/svg%22%3E%0A%3Cpath%20d=%22M7.05025%2016.9498L16.9497%207.05027%22%20stroke=%22white%22%20stroke-width=%222%22%20stroke-linecap=%22round%22/%3E%0A%3Cpath%20d=%22M7.05025%207.05029L16.9497%2016.9498%22%20stroke=%22white%22%20stroke-width=%222%22%20stroke-linecap=%22round%22/%3E%0A%3C/svg%3E"); */
+  /* z-index: 9;
+  position: absolute;
   margin-bottom: 3px;
   padding-bottom: 6px;
   padding-right: 6px;
-  color: rgb(188, 31, 31);
+  color: rgb(188, 31, 31); */
+  display: none;
 }
 .kore-chat-window .kore-chat-header .chat-box-controls .reload-btn {
-  margin-bottom:10px;
+  margin-bottom:2px;
   background-size: 16px 16px;
   /* display: inline-block; */
-  font-size: 20px;
+  font-size: 10px;
   background-repeat: no-repeat;
-  color: white;
+  border: none;
+   /* background: blue; */
+   margin-right: 6px;
 }
 
 @media(max-width: 767px) {
@@ -948,16 +957,28 @@ background:#6e70d8;
   position: absolute;
   bottom: 0;
   right: 0;
-  margin: 0;
+  margin-bottom: 0;
+  /* height: 90%; */
   max-height: 100%;
   width: 100%;
   overflow-y: auto;
-  padding: 20px 20px;
+  padding: 20% 10px;
+}
+.botHeaderTitle{
+  margin-bottom: 8px;
+  font-size:medium;
+  font-weight: 700;
 }
 
 .kore-chat-window a {
   color: var(--sdk-chat-window-btn-default-bg);
   text-decoration: none;
+}
+
+.minimize-btn{
+  margin-left: 6px;
+  margin-right: 6px;
+
 }
 
 .kore-chat-window ul.chat-container li:first-child {
@@ -2142,8 +2163,15 @@ border: none !important;
   top: 45px !important;
 }
 
-
+.profile-photo div{
+  background-image: url(https://dlnwzkim0wron.cloudfront.net/f-ca77f8d0-c3d0-5ec9-bb58-8c20e40cd4a6.png)!important;
+}
 /* table template chart css */
+
+.ps__thumb-y{
+background-color: #02026a;
+}
+
 
 .kore-chat-window .tablechart .tablechartDiv,
 .kore-chat-window .largePreviewContent .tablehartDiv {
@@ -3249,6 +3277,7 @@ margin:0;
   position: absolute;
   padding-top: 40px;
   display: block;
+  margin-bottom: 10px;
 }
 
 .kore-chat-window  .welcomeMsg .welcome-footer .selectBG {
