@@ -40,13 +40,14 @@ const App = () => {
       let HeaderTitle=document.getElementById("botHeaderTitle")
       HeaderTitle.remove();
 
-      const closeIcon = document.createElement("div");
+      const closeIcon = document.createElement("img");
 closeIcon.className = "close-btn";
+closeIcon.src="data:image/svg+xml,%3Csvg%20width=%2224%22%20height=%2224%22%20viewBox=%220%200%2024%2024%22%20fill=%22none%22%20xmlns=%22http://www.w3.org/2000/svg%22%3E%0A%3Cpath%20d=%22M7.05025%2016.9498L16.9497%207.05027%22%20stroke=%22white%22%20stroke-width=%222%22%20stroke-linecap=%22round%22/%3E%0A%3Cpath%20d=%22M7.05025%207.05029L16.9497%2016.9498%22%20stroke=%22white%22%20stroke-width=%222%22%20stroke-linecap=%22round%22/%3E%0A%3C/svg%3E"
 closeIcon.style.cursor = "pointer";
 
-const imgElement = document.createElement('img');
-imgElement.src = 'data:image/svg+xml,%3Csvg%20width=%2224%22%20height=%2224%22%20viewBox=%220%200%2024%2024%22%20fill=%22none%22%20xmlns=%22http://www.w3.org/2000/svg%22%3E%0A%3Cpath%20d=%22M7.05025%2016.9498L16.9497%207.05027%22%20stroke=%22white%22%20stroke-width=%222%22%20stroke-linecap=%22round%22/%3E%0A%3Cpath%20d=%22M7.05025%207.05029L16.9497%2016.9498%22%20stroke=%22white%22%20stroke-width=%222%22%20stroke-linecap=%22round%22/%3E%0A%3C/svg%3E';
-closeIcon.appendChild(imgElement);
+// const imgElement = document.createElement('img');
+// imgElement.src = 'data:image/svg+xml,%3Csvg%20width=%2224%22%20height=%2224%22%20viewBox=%220%200%2024%2024%22%20fill=%22none%22%20xmlns=%22http://www.w3.org/2000/svg%22%3E%0A%3Cpath%20d=%22M7.05025%2016.9498L16.9497%207.05027%22%20stroke=%22white%22%20stroke-width=%222%22%20stroke-linecap=%22round%22/%3E%0A%3Cpath%20d=%22M7.05025%207.05029L16.9497%2016.9498%22%20stroke=%22white%22%20stroke-width=%222%22%20stroke-linecap=%22round%22/%3E%0A%3C/svg%3E';
+// closeIcon.appendChild(imgElement);
  
 //headerTitle changes
 let jaidaHeader = document.createElement('div');
@@ -155,30 +156,38 @@ const koreHead = chatElement.chatEle.find(".kore-chat-header");
 // koreHead.style.text="Jaida Universal Bot"
 // koreHead.append("Jaida Universal Bot");
 
-
+// const SendBtn = document.getElementsByClassName(".sendButton");
+// console.log(SendBtn)
 const koreBody = chatElement.chatEle.find(".kore-chat-body");
 const koreFooter = chatElement.chatEle.find(".kore-chat-footer");
 
-startChatButton.addEventListener('keypress',function(event) {
-
-  if (event.key === "Enter") {
-   
-    event.preventDefault();
-    chatWindowInstance.sendMessage("");
-
+// Get all elements with the class "chatInputBox"
+const footContainer = document.getElementsByClassName("footerContainer")[0]; // Assuming there's only one element with this class
+const chatIbElements = document.getElementsByClassName("chatInputBox")[0]; // Assuming there's only one element with this class
+console.log(chatIbElements)
+chatWindowInstance.on('onKeyDown', (chatdown) => {
+  // console.log(chatdown);
+  console.log(chatdown.event.originalEvent.key)
+  // if (chatdown.event.originalEvent.code === 'Enter') {
+  //   console.log("Enter key pressed")
+  //   chatdown.event.originalEvent.code="";
+  //   return
+  // }
+  if (chatdown.event.originalEvent.key === 'Enter') {
+    console.log("Enter key pressed");
+    // chatIbElements.setAttribute('contenteditable', 'false'); // Freeze the chat input box
+  ; // Prevent the default Enter key behavior
   }
-
 });
 
 
-startChatButton.addEventListener('click', () => {
+
+
+startChatButton.addEventListener('click', (e) => {
   templateContainer.style.display = "none";
   koreHead.css("display", "block");
   koreBody.css("display", "block");
   koreFooter.css("display", "block");
-    // koreHead.show();
-    // koreBody.show();
-    // koreFooter.show();
 });
 
       const startChatImgButton = document.createElement("img");
@@ -209,6 +218,13 @@ startChatButton.addEventListener('click', () => {
       // Append the top-level container to chatElement.chatEle
       chatElement.chatEle.append(container);
 
+      // const yRail = document.getElementsByClassName(".ps--scrolling-y");
+      // yRail.css({
+      //   yRail.style.background = "blue"
+
+      // })
+
+
       let sendMsg = chatElement.chatEle.find(".chatSendMsg");
     
       // let sentMsg=document.getElementById('chatSend');
@@ -225,6 +241,7 @@ startChatButton.addEventListener('click', () => {
       sendBtn.className = "sendButton";
       divInside.append(sendBtn);
       
+
       let IconInside = document.createElement("img");
       IconInside.src="data:image/svg+xml,%3Csvg%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Cpath%20d%3D%22M5.48183%204.00046C5.32994%204.00616%205.18887%204.08049%205.09836%204.2027C5.00796%204.32481%204.97794%204.48151%205.017%204.62838L6.68291%2010.8729L14.0392%2011.999L6.68405%2013.124L5.01714%2019.3703C4.98355%2019.4952%204.99973%2019.6284%205.06223%2019.7415C5.12484%2019.8548%205.22874%2019.9395%205.35239%2019.9777C5.47593%2020.0159%205.60952%2020.0047%205.72503%2019.9465L20.7245%2012.4461C20.8355%2012.3903%2020.9217%2012.2953%2020.9664%2012.1794C21.0112%2012.0635%2021.0112%2011.9352%2020.9664%2011.8193C20.9217%2011.7034%2020.8355%2011.6084%2020.7245%2011.5525L5.72503%204.05221C5.6497%204.01471%205.566%203.99696%205.48196%204.00042L5.48183%204.00046Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E%0A"
       sendBtn.append(IconInside);
@@ -234,6 +251,60 @@ startChatButton.addEventListener('click', () => {
         display:"block"
       })
 
+      // const sendButton = chatElement.chatEle.find(".sendButton");
+//       const chatInputBox = document.querySelector(".chatInputBox");
+
+// chatInputBox.addEventListener("keydown", (e) => {
+//   e.preventDefault();
+// });
+
+// chatInputBox.addEventListener("keyup", (e) => {
+//   e.preventDefault();
+// });
+
+// chatInputBox.addEventListener("keypress", (e) => {
+//   e.preventDefault();
+// });
+
+{/* <div role="textbox" class="chatInputBox" contenteditable="true" placeholder="Message..."></div> */}
+// let Chatbox=chatElement.chatEle.find(".chatInputBox")
+// Chatbox.remove();
+
+// let footerContainer=chatElement.chatEle.find(".footerContainer")
+// let ChatboxBtn = document.createElement("input");
+// // ChatboxBtn.role = "textbox";
+// ChatboxBtn.className = "chatInputBox";
+// ChatboxBtn.contentEditable = true;
+// ChatboxBtn.placeholder = "Message..."
+// footerContainer.append(ChatboxBtn)
+// BlockBtn.after(ChatboxBtn)
+
+
+
+// sendButton.addEventListener("keydown", (event) => {
+//   console.log(sendButton)
+
+//   if (event.key === "Enter") {
+//     event.preventDefault(); 
+//   }
+// });
+    //  console.log(sendBtn)
+    //   sendBtn.removeEventListener("keypress", (event) => {
+    //     if (event.key === "Enter") {
+    //       event.preventDefault(); 
+    //     }
+    //   });
+
+    //   sendBtn.removeEventListener("keyup", (event) => {
+    //     if (event.key === "Enter") {
+    //       event.preventDefault(); 
+    //     }
+    //   });
+    //   sendBtn.removeEventListener("keydown", (event) => {
+    //     if (event.key === "Enter") {
+    //       event.preventDefault(); 
+    //     }
+    //   });
       // let ExpandBtn=chatElement.chatEle.find(".expand-btn");
       // let ExpandImg=document.createElement("img")
       // ExpandImg.src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAbFBMVEX///8AAADj4+Ovr69AQEDw8PA8PDzl5eVWVlbExMTy8vLo6Ojc3NzV1dUEBARISEh9fX0TExOampoZGRlcXFzPz89zc3NnZ2e0tLTAwMCpqan5+fl5eXmRkZEtLS2jo6OJiYlGRkYoKCiNjY0ddXiFAAAEz0lEQVR4nO3dCVLbQBCFYY9ZDHjHJCyOCUnuf8dETAE2ljxLv+6eIu8/gNCX7qqYRGONRowxxhhjjDHGGGOMMcYYY4wxxhhjjDHG/qu209n4RunSk9l4q3Pp7G5uL0PX4sccfemL3fPrpTerGfrSBe3CR8sp9NKrvUvfKe1IspvncNAj7tLT9eGlv+EuXdBF+NwZ6tLjo0tfoy5d0DEQRjwGehD7gCBiH9Ce2A+EEPuB1sQhIIA4BLQlDgPFxGGgJfEUUEg8BbQjngaKiKeBVsQUUEBMAW2IaWA1MQ20IOYAK4k5QH1iHrCKmAfUJuYCK4i5QF1iPrCYmA/UJJYAC4klQD1iGbCIWAbUIpYCC4ilQB1iOTCbWA5UIW4qbiOPWAMMYYwGfq+6jRxiHTBswMBZ3W1kECuBIfzECitHmCZWA8MCK6y+jwSxHhgC9B+hq5c0QZQAsWv6KLmTYaIIGFZI4YPoVoaIMmC4b0jYTxQCsULZlvYTpUDslk6kd3NMFAPDE1Io+duinygHgj+3vYCJAOAzFFj1m8Xn9ogAIPK/K1+7BdzTOxEBXIKBo9EScFdnOGBQ+J/vc8BtncGAEzwQRoQA4b//xi4Bt/YwBVxEZ4JdiCkiUgO2QlRa0RhiUaUpTrDLf4rKQH+i6orGfBdVfYJdnlM0AXoSDVY05rWoRhPs8pmiIdCHaLaiMftFNZ1gl/UUzYHWROMVjVkuqsMEu+ym6AS0I7qsaMxmUd0m2GUxRVegBdFxRWPai+o8wS7dKTYA1CW6r2hMb1GbmGCX1hSbAWoRG1nRmMaiNjTBLvwUGwPiiU2taAy7qM1NsAs5xSaBSGKDKxpDLWqjE+z69dWBsudQ37r1VpwI8hAC8Fw/PBCwXSIM2CoRCGyTCAW2SAQD2yPCga0RFYBtEVWALRGVgO0Q1YCtEBWBbRBVgS0QlYH+RHWgN9EA6Es0AXoSjYB+RDOgF9EQ6EM0BXoQjYH2RHOgNdEBaEt0AVoSnYB2RDegFdERaEN0BVoQnYH6RHegNrEBoC6xCaAmEQIEnutvEzjBnetvE9g9RtIqUf4VNeHtKQvIuX44cAu4q/fHSBBThL9Q4x5wUx/PySCIYOAccEv7DwIBFhX82A1ghIdPOgGmiBWigQgi9MUl8qe5jp9VEy8qdE2l30jX+zCedIotfavgwNOGQmJL3yo49DilbFGhwmsVoHCKL0ih6KuPTj0QKyFiP5uu0z+wBihaVOxLwnbpH1gFFEzxHAqs/+Cdfma7loj+zvInLWDtot6BgZWfTPOeuq+Z4hoOHI2utIA1xIXKCwOLifnnJooX9UIDWEwsORhSOEW1Vz4WEcvOLpUQF0oT7Coglh7tKVhURWABsfzsUvYUld9KmkmsOV6XR9Rc0VgWse70WdaiqgOziLXH6zKmaPLi3CSx/gRoiqi/orEEUXJAMrGoRsAEUXYC9OQUDd/tfIIoPaQ8TLRa0dggUX6Gd3BRTYGDRMQh5YEpmr9+vJeIOUffR7Rd0VgPEXXMvGdRHYA9RNw5+s9T1PmFN93haz2ekX/Mh+8IW26Bly5qvrdO4NegXf/+uLTrqZnZ7moTFucr9AtD/jX/c7UO6+WL9WvjGWOMMcYYY4wxxhhjjDHGGGNftb/seUeftm5sVQAAAABJRU5ErkJggg=="
@@ -250,15 +321,45 @@ startChatButton.addEventListener('click', () => {
     let Mbtn=chatElement.chatEle.find(".minimize-btn")
     Mbtn.remove();
    
-    //Adding new icon for minimizing and expanding window
+//     //Adding new icon for minimizing and expanding window
     let botControls=chatElement.chatEle.find(".chat-box-controls") 
-let GlobeBtn = document.createElement("button");
-GlobeBtn.type="button"
-GlobeBtn.className = "reload-btn";
-GlobeBtn.src="";
-// GlobeBtn.title="Reconnect";
-botControls.append(GlobeBtn);
-    
+
+    //Creating a globe icon
+    let GlobeBtn = document.createElement("img");
+    GlobeBtn.type = "button";
+    GlobeBtn.className = "reload-btn";
+    botControls.append(GlobeBtn);
+    GlobeBtn.src = "data:image/svg+xml,%3Csvg%20width=%2224%22%20height=%2224%22%20viewBox=%220%200%2024%2024%22%20fill=%22none%22%20xmlns=%22http://www.w3.org/2000/svg%22%3E%0A%3Cpath%20d=%22M12%2019C15.866%2019%2019%2015.866%2019%2012C19%208.13401%2015.866%205%2012%205C8.13401%205%205%208.13401%205%2012C5%2015.866%208.13401%2019%2012%2019Z%22%20stroke=%22white%22%20stroke-width=%222%22%20stroke-linecap=%22round%22%20stroke-linejoin=%22round%22/%3E%0A%3Cpath%20d=%22M5%2012H19%22%20stroke=%22white%22%20stroke-width=%222%22%20stroke-linecap=%22round%22%20stroke-linejoin=%22round%22/%3E%0A%3Cpath%20d=%22M14.6923%2012C14.5601%2014.5598%2013.6172%2017.0113%2012%2019C10.3828%2017.0113%209.43994%2014.5598%209.30769%2012C9.43994%209.44016%2010.3828%206.9887%2012%205C13.6172%206.9887%2014.5601%209.44016%2014.6923%2012V12Z%22%20stroke=%22white%22%20stroke-width=%222%22%20stroke-linecap=%22round%22%20stroke-linejoin=%22round%22/%3E%0A%3C/svg%3E%0A";
+    GlobeBtn.style.cursor = "pointer";
+
+
+    //Creating an expand icon
+    let ExpandBtn = document.createElement("img");
+    ExpandBtn.type = "button";
+    ExpandBtn.className = "expand-btn";
+    botControls.append(ExpandBtn);
+    ExpandBtn.src = "data:image/svg+xml,%3Csvg%20width=%2224%22%20height=%2224%22%20viewBox=%220%200%2024%2024%22%20fill=%22none%22%20xmlns=%22http://www.w3.org/2000/svg%22%3E%0A%3Cpath%20d=%22M11%206H6V11%22%20stroke=%22white%22%20stroke-width=%222%22%20stroke-linecap=%22round%22/%3E%0A%3Cpath%20d=%22M6%206L10.5%2010.5%22%20stroke=%22white%22%20stroke-width=%222%22%20stroke-linecap=%22round%22/%3E%0A%3Cpath%20d=%22M13%2018L18%2018L18%2013%22%20stroke=%22white%22%20stroke-width=%222%22%20stroke-linecap=%22round%22/%3E%0A%3Cpath%20d=%22M18%2018L13.5%2013.5%22%20stroke=%22white%22%20stroke-width=%222%22%20stroke-linecap=%22round%22/%3E%0A%3C/svg%3E%0A";
+    ExpandBtn.style.cursor = "pointer";
+
+
+    //creating an minimize button
+    let MinimizeBtn = document.createElement("img");
+    MinimizeBtn.type = "button";
+    MinimizeBtn.className = "minimize-btn";
+    botControls.append(MinimizeBtn);
+    MinimizeBtn.src = "data:image/svg+xml,%3Csvg%20width=%2224%22%20height=%2224%22%20viewBox=%220%200%2024%2024%22%20fill=%22none%22%20xmlns=%22http://www.w3.org/2000/svg%22%3E%0A%3Crect%20x=%223%22%20y=%2216%22%20width=%2218%22%20height=%222.5%22%20rx=%221.25%22%20fill=%22white%22/%3E%0A%3C/svg%3E%0A";
+    MinimizeBtn.style.cursor = "pointer";
+
+
+    let CloseBtnImg = document.createElement("img");
+    CloseBtnImg.type = "button";
+    CloseBtnImg.className = "close-btn";
+    botControls.append(CloseBtnImg);
+    CloseBtnImg.src = "data:image/svg+xml,%3Csvg%20width=%2224%22%20height=%2224%22%20viewBox=%220%200%2024%2024%22%20fill=%22none%22%20xmlns=%22http://www.w3.org/2000/svg%22%3E%0A%3Cpath%20d=%22M7.05025%2016.9498L16.9497%207.05027%22%20stroke=%22white%22%20stroke-width=%222%22%20stroke-linecap=%22round%22/%3E%0A%3Cpath%20d=%22M7.05025%207.05029L16.9497%2016.9498%22%20stroke=%22white%22%20stroke-width=%222%22%20stroke-linecap=%22round%22/%3E%0A%3C/svg%3E";
+    CloseBtnImg.style.cursor = "pointer";
+
+
+
         
     });
 
