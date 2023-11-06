@@ -801,10 +801,11 @@
 
 
 .kore-chat-window .messages {
-  background-image: url("https://pscusjohnson.azureedge.net/mediacache/2/2/6/d/a/6/226da6ffddced569c3593df200703251eaccdac5.png?sv=2017-04-17&sr=c&sig=OKk2birKe%2Bi3JofMJwQ3wXj5SxN%2BGsR90rRN0%2FhwsDY%3D&se=2023-10-27T08%3A38%3A08Z&sp=r") !important;
+  /* background-image: url("https://pscusjohnson.azureedge.net/mediacache/2/2/6/d/a/6/226da6ffddced569c3593df200703251eaccdac5.png?sv=2017-04-17&sr=c&sig=OKk2birKe%2Bi3JofMJwQ3wXj5SxN%2BGsR90rRN0%2FhwsDY%3D&se=2023-10-27T08%3A38%3A08Z&sp=r") !important; */
+  background-image: url("https://pscusjohnson.azureedge.net/mediacache/2/2/6/d/a/6/226da6ffddced569c3593df200703251eaccdac5.png?sv=2017-04-17&sr=c&sig=EPVd%2BWlJoDVvWXZhzrivCavjRp2MT11b0uqm1xjSrWU%3D&se=2023-11-08T08%3A18%3A11Z&sp=r");
   display: inline-block;
-  width: 100%;
-  height: 100%;
+  /* width: 100%;
+  height: 100%; */
   background-size: cover;
 }
  
@@ -868,7 +869,7 @@ line-height: 70px;
   color: var(--sdk-chat-window-header-font-clr);
   margin-top: 0px;
 padding-top:20px;
-margin-bottom: 5px;
+margin-bottom: 20px;
 
 }
 
@@ -914,7 +915,7 @@ background:#6e70d8;
   background-repeat: no-repeat;
   border: none;
    /* background: blue; */
-   margin-right: 6px;
+   margin-right: 8px;
 }
 
 @media(max-width: 767px) {
@@ -965,9 +966,10 @@ background:#6e70d8;
   padding: 20% 10px;
 }
 .botHeaderTitle{
-  margin-bottom: 8px;
-  font-size:medium;
-  font-weight: 700;
+  margin-bottom: 20px;
+  font-family: 'J&J Circular';
+    font-size: 19px;
+    font-weight: 900;
 }
 
 .kore-chat-window a {
@@ -976,8 +978,7 @@ background:#6e70d8;
 }
 
 .minimize-btn{
-  margin-left: 6px;
-  margin-right: 6px;
+  margin: 0px 8px!important;
 
 }
 
@@ -3277,7 +3278,14 @@ margin:0;
   position: absolute;
   padding-top: 40px;
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 25px;
+  font-family: 'J&J Circular';
+  height: 24px;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 9px;
+  letter-spacing: 0;
+  text-align: left;
 }
 
 .kore-chat-window  .welcomeMsg .welcome-footer .selectBG {
