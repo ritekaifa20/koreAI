@@ -160,25 +160,41 @@ const koreHead = chatElement.chatEle.find(".kore-chat-header");
 // console.log(SendBtn)
 const koreBody = chatElement.chatEle.find(".kore-chat-body");
 const koreFooter = chatElement.chatEle.find(".kore-chat-footer");
+// const contain=chatElement.chatEle.find(".container")
+const chatContain = document.getElementsByClassName("chat-container");
+let currentUser = chatElement.chatEle.find(".fromCurrentUser");
+  
 
 // Get all elements with the class "chatInputBox"
 const footContainer = document.getElementsByClassName("footerContainer")[0]; // Assuming there's only one element with this class
 const chatIbElements = document.getElementsByClassName("chatInputBox")[0]; // Assuming there's only one element with this class
 console.log(chatIbElements)
+
 chatWindowInstance.on('onKeyDown', (chatdown) => {
   // console.log(chatdown);
   console.log(chatdown.event.originalEvent.key)
-  // if (chatdown.event.originalEvent.code === 'Enter') {
-  //   console.log("Enter key pressed")
-  //   chatdown.event.originalEvent.code="";
-  //   return
-  // }
+  // chatContain.off('keydown', '.chatInputBox');
+
   if (chatdown.event.originalEvent.key === 'Enter') {
+    
+
+    // Insert a newline character at the cursor's current position
+    try {
+      
     console.log("Enter key pressed");
-    // chatIbElements.setAttribute('contenteditable', 'false'); // Freeze the chat input box
-  ; // Prevent the default Enter key behavior
+    console.log(currentUser.prevObject);
+    currentUser.stopPropagation() ;
+    
+    } catch (error) {
+      console.log("error",error)
+    }
   }
 });
+
+
+
+
+
 
 
 
